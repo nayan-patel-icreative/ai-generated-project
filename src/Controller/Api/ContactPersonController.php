@@ -3,6 +3,7 @@
 namespace Icreative\ContactPersonPlugin\Controller\Api;
 
 use Shopware\Core\Framework\Context;
+use Shopware\Core\Framework\DataAbstractionLayer\Search\Criteria;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -37,7 +38,7 @@ class ContactPersonController extends AbstractController
     #[Route(path: '/api/icreative/contact-person', name: 'api.icreative.contact_person.list', methods: ['GET'])]
     public function list(Context $context): JsonResponse
     {
-        $result = $this->contactPersonService->getRepository()->search(new Shopware\Core\Framework\DataAbstractionLayer\Search\Criteria(), $context);
+        $result = $this->contactPersonService->getRepository()->search(new Criteria(), $context);
         $items = [];
         foreach ($result->getEntities() as $entity) {
             $items[] = [
