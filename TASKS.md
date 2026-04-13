@@ -6,3 +6,5 @@
 6. Implement validation
 7. Write tests
 8. Deploy application
+9. Add code quality tooling (PHPStan level 9 + PHP Insights >= 90)
+10. Add CI workflow for quality checks
