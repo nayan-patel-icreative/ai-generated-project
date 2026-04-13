@@ -1,0 +1,20 @@
+{% sw_extends '@Storefront/storefront/page/product-detail/index.html.twig' %}
+
+{% block page_product_detail_description %}
+    {{ parent() }}
+
+    {% if icreativeContactPersons is defined and icreativeContactPersons|length > 0 %}
+        <div class="icreative-contact-person">
+            <h3>Contact person</h3>
+            <ul>
+                {% for p in icreativeContactPersons %}
+                    <li>
+                        <strong>{{ p.name }}</strong>
+                        {% if p.email %}- <a href="mailto:{{ p.email }}">{{ p.email }}</a>{% endif %}
+                        {% if p.phone %}- <span>{{ p.phone }}</span>{% endif %}
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+    {% endif %}
+{% endblock %}

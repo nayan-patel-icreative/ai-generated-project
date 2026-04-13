@@ -7,6 +7,16 @@
 
         <service id="Icreative\ContactPersonPlugin\\" resource="../../*"/>
 
+        <service id="Icreative\ContactPersonPlugin\\Controller\\Api\\ContactPersonController">
+            <argument type="service" id="icreative_contact_person.repository"/>
+            <tag name="controller.service_arguments"/>
+        </service>
+
+        <service id="Icreative\ContactPersonPlugin\\Subscriber\\StorefrontSubscriber">
+            <argument type="service" id="icreative_contact_person.repository"/>
+            <tag name="kernel.event_subscriber"/>
+        </service>
+
         <service id="Icreative\ContactPersonPlugin\\Core\\Content\\ContactPerson\\ContactPersonDefinition">
             <tag name="shopware.entity.definition" entity="icreative_contact_person"/>
         </service>

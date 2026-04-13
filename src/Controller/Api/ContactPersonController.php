@@ -27,4 +27,21 @@ class ContactPersonController extends AbstractController
         $this->icreativeContactPersonRepository->create([$payload], $context);
         return new JsonResponse(['success' => true]);
     }
+
+    #[Route(path: '/api/icreative/contact-person', name: 'api.icreative.contact_person.list', methods: ['GET'])]
+    public function list(Context $context): JsonResponse
+    {
+        $result = $this->icreativeContactPersonRepository->search(new Shopware\Core\Framework\DataAbstractionLayer\Search\Criteria(), $context);
+        $items = [];
+        foreach ($result->getEntities() as $entity) {
+            $items[] = [
+                'id' => $entity->getId(),
+                'name' => $entity->getName(),
+                'email' => $entity->getEmail(),
+                'phone' => $entity->getPhone(),
+            ];
+        }
+
+        return new JsonResponse(['data' => $items]);
+    }
 }
