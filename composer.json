@@ -1,0 +1,21 @@
+{
+  "name": "generated/shopware-contact-person",
+  "description": "Contact person plugin (generated)",
+  "type": "shopware-platform-plugin",
+  "license": "MIT",
+  "require": {
+    "php": "^8.2"
+  },
+  "autoload": {
+    "psr-4": {
+      "Icreative\\ContactPersonPlugin\\\\": "src/"
+    }
+  },
+  "extra": {
+    "shopware-plugin-class": "Icreative\\ContactPersonPlugin\\\\ContactPersonPlugin",
+    "label": {
+      "en-GB": "Contact Person Plugin",
+      "de-DE": "Kontaktpersonen-Plugin"
+    }
+  }
+}
