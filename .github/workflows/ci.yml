@@ -13,5 +13,6 @@ jobs:
         with:
           php-version: '8.2'
       - run: composer install --no-interaction --no-progress
+      - run: vendor/bin/phpunit
       - run: vendor/bin/phpstan analyse -c phpstan.neon
       - run: vendor/bin/phpinsights --no-interaction --min-quality=90 --min-complexity=90 --min-architecture=90 --min-style=90

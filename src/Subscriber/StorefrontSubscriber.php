@@ -2,7 +2,6 @@
 
 namespace Icreative\ContactPersonPlugin\Subscriber;
 
-use Shopware\Core\Framework\Context;
 use Shopware\Core\Framework\DataAbstractionLayer\EntityRepository;
 use Shopware\Core\Framework\DataAbstractionLayer\Search\Criteria;
 use Shopware\Storefront\Event\StorefrontRenderEvent;
@@ -23,6 +22,12 @@ class StorefrontSubscriber implements EventSubscriberInterface
 
     public function onStorefrontRender(StorefrontRenderEvent $event): void
     {
+        $request = $event->getRequest();
+        $route = $request->attributes->get('_route');
+        if (!is_string($route) || $route !== 'frontend.detail.page') {
+            return;
+        }
+
         $context = $event->getSalesChannelContext()->getContext();
         $criteria = new Criteria();
         $criteria->setLimit(5);

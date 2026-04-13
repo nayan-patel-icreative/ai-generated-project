@@ -7,8 +7,12 @@
 
         <service id="Icreative\ContactPersonPlugin\\" resource="../../*"/>
 
-        <service id="Icreative\ContactPersonPlugin\\Controller\\Api\\ContactPersonController">
+        <service id="Icreative\ContactPersonPlugin\\Service\\ContactPersonService">
             <argument type="service" id="icreative_contact_person.repository"/>
+        </service>
+
+        <service id="Icreative\ContactPersonPlugin\\Controller\\Api\\ContactPersonController">
+            <argument type="service" id="Icreative\ContactPersonPlugin\\Service\\ContactPersonService"/>
             <tag name="controller.service_arguments"/>
         </service>
 
